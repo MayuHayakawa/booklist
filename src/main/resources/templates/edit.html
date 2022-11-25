@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit book</title>
+</head>
+<body>
+    <h1>edit book infomation</h1>
+    <form th:action="@{/book-edit}" th:object="${editBookForm}" method="POST">
+        <input type="hidden" th:field="*{id}" th:value="*{id}">
+        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</p>
+        Title: <input type="text" th:field="*{title}" th:value="*{title}"><br>
+        <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</p>
+        Price: <input type="number" th:field="*{price}" th:value="*{price}"><br>
+        <input type="submit" value="update">
+    </form>
+    <a th:href="@{/book-list}">Back to Home page</a>
+</body>
+</html>
